@@ -1,0 +1,34 @@
+body {
+    max-width: 1200px;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+    background-color: darkgray;
+}
+
+.container label {
+    grid-column: 1/2;
+}
+
+.container input {
+    grid-column: 2/3;
+}
+
+.container label {
+    grid-column: 1/2;
+}
+
+.container button {
+    grid-column: 1/3;
+}
+
+.result {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
