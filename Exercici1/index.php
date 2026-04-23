@@ -14,11 +14,23 @@ function createYears(): string
 
 function getResult(): ?string
 {
-    if (isset($_SESSION['result'])) {
-        return isset($_SESSION['result']);
+    if (isset($_POST['name'], $_POST['age'], $_POST['course'])) {
+
+        $name = $_POST['name'];
+        $age = $_POST['age'];
+        $course = $_POST['course'];
+
+        $_SESSION['result'] =
+            "<pre>
+                Nombre: $name
+                Edad: $age años
+                Curso: $course
+            </pre>";
     } else {
-        return null;
+        $_SESSION['result'] = null;
     }
+
+    return $_SESSION['result'];
 }
 
 ?>
@@ -34,7 +46,7 @@ function getResult(): ?string
 
 <body>
     <div>
-        <form class="container" action="getResult.php" method="post">
+        <form class="container" action="index.php" method="post">
             <h3 style="font-weight: bold;">Consultar Datos</h3>
             <label for="name">Nombre:</label>
             <input type="text" id="name" name="name">
@@ -50,7 +62,6 @@ function getResult(): ?string
         </form>
     </div>
     <div class="result">
-
         <?php
         echo getResult();
         ?>
