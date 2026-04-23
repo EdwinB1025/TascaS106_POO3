@@ -28,23 +28,25 @@ function getResult(): ?string
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
 
 <body>
-    <div class="container">
-        <form action="getResult.php" method="post">
+    <div>
+        <form class="container" action="getResult.php" method="post">
             <h3 style="font-weight: bold;">Consultar Datos</h3>
             <label for="name">Nombre:</label>
             <input type="text" id="name" name="name">
             <label for="age">Edad:</label>
-            <input list="years" id="age" name="age">
-            <button type="submit">Ver datos</button>
-            <datalist id="years">
+            <select id="age" name="age">
                 <?php
                 echo createYears();
                 ?>
-            </datalist>
+            </select>
+            <label for="course">Curso:</label>
+            <input type="text" id="course" name="course">
+            <button type="submit">Ver datos</button>
         </form>
     </div>
     <div class="result">
