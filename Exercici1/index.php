@@ -20,12 +20,12 @@ function getResult(): ?string
         $age = $_POST['age'];
         $course = $_POST['course'];
 
-        $_SESSION['result'] =
-            "<pre>
-                Nombre: $name
-                Edad: $age años
-                Curso: $course
-            </pre>";
+        $_SESSION['result'] = '
+<pre class="result">
+    Nombre: ' . $name . '
+    Edad: ' . $age . ' años
+    Curso: ' . $course . '
+</pre>';
     } else {
         $_SESSION['result'] = null;
     }
@@ -61,7 +61,7 @@ function getResult(): ?string
             <button type="submit">Ver datos</button>
         </form>
     </div>
-    <div class="result">
+    <div>
         <?php
         echo getResult();
         ?>
