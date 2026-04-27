@@ -1,17 +1,6 @@
 <?php
 session_start();
 
-function createYears(): string
-{
-    $options = "";
-    for ($i = 0; $i <= 120; $i++) {
-        $value = $i . " años";
-        $options .= '<option value = "' . $i . '">' . $value . '</option>' . "\n";
-    }
-
-    return $options;
-}
-
 function getResult(): ?string
 {
     if (isset($_POST['name'], $_POST['age'], $_POST['course'])) {
@@ -51,11 +40,7 @@ function getResult(): ?string
             <label for="name">Nombre:</label>
             <input type="text" id="name" name="name">
             <label for="age">Edad:</label>
-            <select id="age" name="age">
-                <?php
-                echo createYears();
-                ?>
-            </select>
+            <input type="number" id="age" name="age">
             <label for="course">Curso:</label>
             <input type="text" id="course" name="course">
             <button type="submit">Ver datos</button>

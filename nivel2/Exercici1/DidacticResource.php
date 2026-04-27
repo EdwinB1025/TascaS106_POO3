@@ -4,6 +4,7 @@ class DidacticResource
 {
     private ?Topic $topic;
     private ?ResourceType $resourceType;
+    public string $log = "";
 
     public function __construct(
         private string $name,
@@ -16,31 +17,30 @@ class DidacticResource
         $ResouceName = strtolower($ResouceName);
         $this->topic = Topic::tryFrom($topicName);
         $this->resourceType = ResourceType::tryFrom($ResouceName);
-        echo "\n";
         switch (true) {
             case $this->topic === null:
-                echo __FILE__ . ': ' . __METHOD__ . '(linea:' . __LINE__ . "): tema: $topicName incorrecto, intenta:\n" . Topic::caseNames() . "\n";
+                $this->log = "\n" . __FILE__ . ': ' . __METHOD__ . '(linea:' . __LINE__ . "): tema: $topicName incorrecto, intenta:\n" . Topic::caseNames() . "\n";
                 break;
             case $this->resourceType === null:
-                echo __FILE__ . ': ' . __METHOD__ . '(linea:' . __LINE__ . "): recurso: $ResouceName incorrecto, intenta:\n" . ResourceType::caseNames() . "\n";
+                $this->log = __FILE__ . ': ' . __METHOD__ . '(linea:' . __LINE__ . "): recurso: $ResouceName incorrecto, intenta:\n" . ResourceType::caseNames() . "\n";
         }
     }
     public function setName(string $name): void
     {
         $firstName = $this->name;
         $this->name = $name;
-        echo "\n" . __FILE__ . ': ' . __METHOD__ . '(linea:' . __LINE__ . "): $firstName -> $name\n";
+        $this->log = "\n" . __FILE__ . ': ' . __METHOD__ . '(linea:' . __LINE__ . "): $firstName -> $name\n";
     }
     public function setUrl(string $url): void
     {
         $firstUrl = $this->url;
         $this->url = $url;
-        echo "\n" . __FILE__ . ': ' . __METHOD__ . '(linea:' . __LINE__ . "): $firstUrl -> $url\n";
+        $this->log = "\n" . __FILE__ . ': ' . __METHOD__ . '(linea:' . __LINE__ . "): $firstUrl -> $url\n";
     }
     public function setTopic(string $TopicName): void
     {
         if (Topic::tryFrom(strtolower($TopicName)) === null) {
-            echo "\n" . __FILE__ . ': ' . __METHOD__ . '(linea:' . __LINE__ . "): Tema: $TopicName tema incorrecto, intenta:\n" . Topic::caseNames() . "\n";
+            $this->log = "\n" . __FILE__ . ': ' . __METHOD__ . '(linea:' . __LINE__ . "): Tema: $TopicName tema incorrecto, intenta:\n" . Topic::caseNames() . "\n";
         } else {
             $this->topic = Topic::tryFrom(strtolower($TopicName));
         }
@@ -48,7 +48,7 @@ class DidacticResource
     public function setResource(string $ResouceName): void
     {
         if (ResourceType::tryFrom(strtolower($ResouceName)) === null) {
-            echo "\n" . __FILE__ . ': ' . __METHOD__ . '(linea:' . __LINE__ . "): Recurso: $ResouceName incorrecto, intenta:\n" . ResourceType::caseNames() . "\n";
+            $this->log = "\n" . __FILE__ . ': ' . __METHOD__ . '(linea:' . __LINE__ . "): Recurso: $ResouceName incorrecto, intenta:\n" . ResourceType::caseNames() . "\n";
         } else {
             $this->resourceType = ResourceType::tryFrom(strtolower($ResouceName));
         }
