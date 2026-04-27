@@ -1,18 +1,16 @@
 <?php
-class NewClass
+class Example
 {
 
     private bool $status;
+    private int $numStudents;
 
     public function __construct(
         private string $name,
-        private int $numStudents,
         private string $topic,
     ) {
-        $this->name = $name;
         $this->numStudents = 22;
         $this->status = true;
-        $this->topic = $topic;
         echo __FILE__ . ': ' . __METHOD__ . '(linea:' . __LINE__ . "): se ha ejecutado correctamente.\n";
     }
     public function setName(string $name): void

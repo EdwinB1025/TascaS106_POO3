@@ -7,9 +7,6 @@ class Car
         set(string  $gasValue) {
             $this->gasName = $gasValue;
             $this->gasType = gasType::tryFrom(strtolower($gasValue));
-            if ($this->gasType === null) {
-                echo __FILE__ . ': ' . __METHOD__ . '(linea:' . __LINE__ . "): comustible: $gasValue incorrecto, intenta:\n" . gasType::caseNames() . "\n";
-            }
         }
     }
     public function __construct(
@@ -21,5 +18,10 @@ class Car
         $this->gasName = $gasValue;
     }
 
-    use CarTraits;
+    public function getGasType(): ?string
+    {
+        return $this->gasType->name;
+    }
+
+    use Turbo;
 }

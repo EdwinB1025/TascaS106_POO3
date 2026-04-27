@@ -1,6 +1,6 @@
 <?php
 
-trait CarTraits
+trait Turbo
 {
     public function boost(): void
     {
