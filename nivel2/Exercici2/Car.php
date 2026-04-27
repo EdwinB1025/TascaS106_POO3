@@ -2,25 +2,21 @@
 require_once 'gasType.php';
 class Car
 {
-    private ?gasType $gasType;
-    public string $gasName {
-        set(string  $gasValue) {
-            $this->gasName = $gasValue;
-            $this->gasType = gasType::tryFrom(strtolower($gasValue));
-        }
-    }
+
     public function __construct(
         public string $brand,
         public string $numberPlate,
-        string $gasValue,
+        private gasType $gasType,
         public int $maxSpeed,
-    ) {
-        $this->gasName = $gasValue;
-    }
+    ) {}
 
     public function getGasType(): ?string
     {
         return $this->gasType->name;
+    }
+    public function setGasType(gasType $type): void
+    {
+        $this->gasType = $type;
     }
 
     use Turbo;
